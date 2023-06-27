@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             doubleJumpUsed= false;
 
         }
-        else if( Input.GetKeyDown(KeyCode.Space) && !isOnGround && !doubleJumpUsed)
+        else if( Input.GetKeyDown(KeyCode.Space) && !isOnGround && !doubleJumpUsed && !gameOver)
         {
             doubleJumpUsed = true;
             playerRb.AddForce(Vector3.up * doubleJumpForce, ForceMode.Impulse);
