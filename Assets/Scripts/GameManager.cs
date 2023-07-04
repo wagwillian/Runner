@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +11,8 @@ public class GameManager : MonoBehaviour
     public float lerpSpeed;
     public Transform startingPoint;
     private PlayerController playerControllerScript;
+    public TextMeshProUGUI gameOverText;
+    public Button restartButton;
 
     // Start is called before the first frame update
     void Start()
@@ -58,5 +63,16 @@ public class GameManager : MonoBehaviour
 
         playerControllerScript.GetComponent<Animator>().SetFloat("Speed_Multiplier", 1.0f);
         playerControllerScript.gameOver = false;
+    }
+
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

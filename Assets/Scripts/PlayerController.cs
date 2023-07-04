@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private Animator playerAnim;
+    private GameManager gameManager;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
     private AudioSource playerAudio;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         Physics.gravity *= gravityModifier;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
     }
 
@@ -81,6 +83,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
+            gameManager.GameOver();
+            Physics.gravity /= gravityModifier;
+            
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
             dirtParticle.Stop();
