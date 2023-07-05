@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Security.Cryptography.X509Certificates;
 
 public class GameManager : MonoBehaviour
 {
@@ -65,6 +66,13 @@ public class GameManager : MonoBehaviour
         playerControllerScript.gameOver = false;
     }
 
+    public void StartGame()
+    {
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        score = 0;
+        playerControllerScript.gameOver = true;
+        StartCoroutine(PlayIntro());
+    }
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
