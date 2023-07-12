@@ -18,10 +18,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-        score = 0;
-        playerControllerScript.gameOver = true;
-        StartCoroutine(PlayIntro());
+        StartGame();
     }
 
     // Update is called once per frame
